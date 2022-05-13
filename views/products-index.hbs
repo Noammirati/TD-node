@@ -1,0 +1,46 @@
+{{#if error}} 
+  <div class="alert alert-danger" role="alert">
+    ERREUR : {{error}}
+  </div>
+{{else}}
+  <header class="d-flex justify-content-between align-items-center my-5">
+    <h2>Liste des produits</h2>
+    <div class="d-flex flex-column">
+      <a class="btn btn-primary btn-lg my-1" href="/products/new">Ajouter un produit</a>
+      <a class="btn btn-outline-primary btn-sm my-1" href="/products/populate">Peupler la base de données automatiquement</a>
+    </div>
+    
+  </header>
+
+  {{#if search}}
+    <form class="form-inline m-3" action="/products/search" method="GET">
+      <div class="input-group">
+        <input name="search" class="form-control mr-sm-2" type="search" value={{search}} aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Rechercher</button>
+      </div>
+    </form>
+    <a class="btn btn-outline-primary" href="/products/">Retour à la liste complète</a>
+  {{else}}
+    <form class="form-inline m-3" action="/products/search" method="GET">
+      <div class="input-group">
+        <input name="search" class="form-control mr-sm-2" type="search" placeholder="Rechercher des produits par nom et description. ex: poney, gros, marron" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Rechercher</button>
+      </div>
+    </form>
+  {{/if}}
+
+  <ul class="d-flex flex-items-container mt-3">
+    {{#each products}}
+      <li>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title uppercase-start">{{this.name}}</h5>
+            <a class="btn btn-light card-link" href="/products/edit/{{this._id}}">Modifier</a>
+            <a class="btn btn-primary card-link" href="/products/{{this._id}}">Consulter</a>
+          </div>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+
+{{/if}}

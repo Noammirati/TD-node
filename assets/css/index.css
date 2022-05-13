@@ -1,0 +1,17 @@
+.flex-items-container {
+    flex-wrap: wrap;
+    list-style-type: none;
+    gap: 2em;
+}
+
+.flex-items-container > *{
+    width: 15rem;   
+}
+
+.uppercase-start::first-letter {
+    text-transform: uppercase;
+}
+
+.form-group > * {
+    margin-block: 0.25rem;
+}

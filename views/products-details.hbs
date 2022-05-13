@@ -1,0 +1,11 @@
+{{#if error}} 
+    <div class="alert alert-danger" role="alert">
+        ERREUR : {{error}}
+    </div>
+{{/if}}
+
+<h3 class="uppercase-start mt-5">{{product.name}}</h3>
+<p>Quantité: {{product.qty}}</p>
+<p>{{product.description}}</p>
+<a class="btn btn-light" href="/products/delete/{{product._id}}">Supprimer</a>
+<a class="btn btn-primary" href="/products/edit/{{product._id}}">Editer</a>
